@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Guia de Perguntas</title>
-</head>
+<%- include('partials/header.ejs') %>
 <body>
-    <%= nome %>
-    <%= lang %>
-    <%= msg %>
-
-    <% if(msg  == true){%>
-       <h3>Isso é um erro</h3>
-   <% }  else {%>
-       <h3>Nenhum erro</h3>
-    <%}%>
-    <% produtos.forEach(function(produto) { %>
-       <%= produto.nome %>
-       <%= produto.preco %>
-
-        <%}) %>
-        <img src="/img/logo.png">
+    <%- include('partials/navbar.ejs') %>
+    <h1>Teste</h1>
 </body>
-</html>
+<%- include('partials/footer.ejs') %>
