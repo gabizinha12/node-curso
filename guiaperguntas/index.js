@@ -42,9 +42,15 @@ app.get("/pergunta/:id", function(req, res) {
         where: {id: id}
     }).then(pergunta => {
      if(pergunta != undefined) {
-     res.render("pergunta", {
-         pergunta: pergunta
-     });
+       Resposta.findAll({
+           where: {perguntaId: pergunta.id},
+           order:[ ['id', 'DESC'] ],
+       }).then(respostas => {
+        res.render("pergunta", {
+            pergunta: pergunta,
+            respostas: respostas
+        });
+       });
      }else {
        res.redirect("/");
      }
@@ -71,7 +77,7 @@ app.post("/responder", function(req, res) {
     corpo: corpo,
     perguntaId: perguntaId
    }).then(() => {
-      res.redirect("/pergunta"+perguntaId)
+      res.redirect(`/pergunta/${perguntaId}`)
    });
 });
 
