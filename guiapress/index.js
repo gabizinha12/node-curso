@@ -1,5 +1,9 @@
 const express = require("express")
 const bodyParser = require("body-parser");
+const categoriesController = require("./categories/CategoriesController")
+const articlesController = require("./articles/ArticlesController")
+const Article = require("./articles/Article")
+const Category = require("./categories/Category")
 const connection = require("./database/database")
 const app = express();
 
@@ -25,6 +29,8 @@ connection
         console.log(error)
     });
 
+app.use("/", categoriesController)
+app.use("/", articlesController)
 
 
 app.get("/", (req,res) => {
