@@ -1,0 +1,23 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h2>Novo artigo</h2>
+        </div>
+        <div class="card-body">
+            <form action="/categories/save" method="POST">
+                <input class="form-control" type="text" name="title" placeholder="Defina o título do artigo">
+                <textarea class="form-control mt-3" placeholder="Escreva o artigo aqui" name="body" id="article"></textarea>
+                <button class="btn btn-success mt-2">Cadastrar</button>
+            </form>
+        </div>
+   </div>
+</div>
+<%- include('../../partials/footer.ejs') %>
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: "#article"
+    })
+</script>

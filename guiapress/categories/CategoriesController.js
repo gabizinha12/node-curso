@@ -48,7 +48,8 @@ router.get("/admin/categories/", (req,res) => {
 })
 
 
-router.get("/admin/categories/edit:id", (req,res) => {
+router.get("/admin/categories/edit/:id", (req,res) => {
+    const id = req.params.id;
     Category.findByPk(id).then(category => {
         if(category != undefined) {
         res.render("admin/categories/edit",{category: category})
@@ -63,7 +64,7 @@ router.get("/admin/categories/edit:id", (req,res) => {
 router.post("/categories/update", (req,res) => {
     var id = req.body.id;
     var title = req.body.title;
-     Category.update({title: title}, {
+     Category.update({title: title, slug: slugify(title)}, {
          where: {
              id: id
          }
