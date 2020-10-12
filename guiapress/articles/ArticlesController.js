@@ -6,7 +6,7 @@ const slugify = require('slugify')
 
 
 router.get("/admin/articles", (req,res) => {
-    Article.findAll({include: [{model: Category}]}).then((articles => {
+    Article.findAll({include: [{model: Category, required: true}]}).then((articles => {
         res.render('admin/articles/index', {articles: articles})
     }))
 })
@@ -31,6 +31,38 @@ router.post('/articles/save', (req,res) => {
         res.redirect('/admin/articles')
     })
 })
+
+router.get('/admin/articles/edit/:id', (req,res) => {
+    const id = req.params.id;
+    Article.findByPk(id).then(article => {
+        if(article != undefined) {
+            Category.findAll().then(categories => {
+                res.render('admin/articles/edit', {article: article, categories: categories})
+            })
+        } else {
+            res.redirect('/admin/articles')
+        }
+    }).catch((e) => {
+        res.redirect('/admin/articles')
+        console.error(e)
+    })
+})
+
+
+router.post('/articles/update', (req,res) => {
+    const id = req.body.id;
+    const title = req.body.title
+    const body = req.body.body
+    const category = req.body.category;
+    Article.update({title: title, body: body, slug: slugify(title), category: category}, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.redirect('/admin/articles')
+    })
+})
+
 
 
 router.post("/articles/delete", (req,res) => {
