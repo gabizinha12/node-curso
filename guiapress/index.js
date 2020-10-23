@@ -1,6 +1,5 @@
 const express = require("express")
 const session = require("express-session")
-const bodyParser = require("body-parser");
 const categoriesController = require("./categories/CategoriesController")
 const articlesController = require("./articles/ArticlesController")
 const usersController = require("./users/UsersController")
@@ -26,9 +25,8 @@ app.use(session({
 app.use(express.static('public'));
 
 
-//Body-parser
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 
 //Database
