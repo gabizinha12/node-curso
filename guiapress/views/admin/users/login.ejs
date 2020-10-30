@@ -3,10 +3,10 @@ include('../../partials/navbar.ejs') %>
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
-      <h1>Criação de usuário</h1>
+      <h1>Login de admin</h1>
     </div>
     <div class="card-body">
-      <form action="/users/create" method="POST">
+      <form action="/authenticate" method="POST">
         <input
           type="email"
           name="email"

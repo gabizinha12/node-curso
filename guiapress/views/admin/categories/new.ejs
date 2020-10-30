@@ -1,16 +1,21 @@
-<%- include('../../partials/header.ejs') %>
-<%- include('../../partials/navbar.ejs') %>
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/navbar.ejs') %>
 <div class="container">
-    <div class="card mt-5">
-        <div class="card-header">
-            <h2>Cadastro de Categoria </h2>
-        </div>
-        <div class="card-body">
-            <form action="/categories/save" method="POST">
-                <input class="form-control" type="text" name="title" placeholder="Defina o título da categoria">
-                <button class="btn btn-success mt-2">Cadastrar</button>
-            </form>
-        </div>
-   </div>
+  <div class="card mt-5">
+    <div class="card-header">
+      <h2>Cadastro de Categoria</h2>
+    </div>
+    <div class="card-body">
+      <form action="/categories/save" method="POST">
+        <input
+          class="form-control"
+          type="text"
+          name="title"
+          placeholder="Defina o título da categoria"
+        />
+        <button class="btn btn-success mt-2">Cadastrar</button>
+      </form>
+    </div>
+  </div>
 </div>
 <%- include('../../partials/footer.ejs') %>

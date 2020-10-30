@@ -1,30 +1,34 @@
-<%- include('partials/header.ejs') %>
-<%- include('partials/homenavbar.ejs') %>
+<%- include('partials/header.ejs') %> <%- include('partials/homenavbar.ejs') %>
 <body>
-    <div class="container">
-        <div class="jumbotron mt-3">
-            <h1 class="display-4">Lorem Ipsum</h1>
-            <p class="lead">Um blog</p>
-            <hr class="my-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum nisi tenetur odit facere voluptatem officiis commodi reprehenderit. Unde in tempora molestiae ex error, distinctio ab fugit tenetur harum illo voluptate!</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
-          </div>
-            <% articles.forEach(article => { %>
-               <div class="card">
-                 <div class="card-header">
-                     <h2><%= article.title %></h2>
-                 </div>
-                 <div class="card-body">
-                   <a class="btn btn-success" href="/<%= article.slug %>"> Ler artigo</a>
-                 </div>
-               </div>
-                  
-       <% }) %>
-       <div class="row">
-        <div class="col col-12">
-         <a class="float-right" href="/articles/page/2"> Next >>></a>
-        </div>
- </div>
+  <div class="container">
+    <div class="jumbotron mt-3">
+      <h1 class="display-4">Lorem Ipsum</h1>
+      <p class="lead">Um blog</p>
+      <hr class="my-4" />
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum nisi
+        tenetur odit facere voluptatem officiis commodi reprehenderit. Unde in
+        tempora molestiae ex error, distinctio ab fugit tenetur harum illo
+        voluptate!
+      </p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
     </div>
+    <% articles.forEach(article => { %>
+    <div class="card">
+      <div class="card-header">
+        <h2><%= article.title %></h2>
+      </div>
+      <div class="card-body">
+        <a class="btn btn-success" href="/<%= article.slug %>"> Ler artigo</a>
+      </div>
+    </div>
+
+    <% }) %>
+    <div class="row">
+      <div class="col col-12">
+        <a class="float-right" href="/articles/page/2"> Next >>></a>
+      </div>
+    </div>
+  </div>
 </body>
 <%- include('partials/footer.ejs') %>

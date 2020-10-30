@@ -1,38 +1,50 @@
-<%- include('../../partials/header.ejs') %>
-<%- include('../../partials/navbar.ejs') %>
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/navbar.ejs') %>
 <div class="container">
-    <div class="card mt-5">
-        <div class="card-header">
-            <h2>Edição de Artigo </h2>
-        </div>
-        <div class="card-body">
-            <form action="/articles/update" method="POST">
-                <input type="hidden" name="id" value="<%=article.id%>">
-                <input class="form-control" type="text" name="title" placeholder="Defina o título do artigo" value="<%=article.title%>">
-                <input type="hidden" name="id" value="<%= article.id%>">
-                <textarea class="form-control mt-3" placeholder="Escreva o artigo aqui" name="body" id="article"></textarea>
-                <label>Categoria</label>
-                <select name="category" class="form-control mb-2">
-                <% categories.forEach((category) => { %>
-                    <% if(category.id === article.categoryId) { %>
-                        <option value="<%= category.id  %>" selected><%= category.title %></option>
-                  <%  }  else {%>
-                    <option value="<%= category.id  %>"><%= category.title %></option>
-                 <% } %>
-               <% }) %>
-                </select>
-                <button class="btn btn-success mt-2">Atualizar</button>
-            </form>
-        </div>
-   </div>
+  <div class="card mt-5">
+    <div class="card-header">
+      <h2>Edição de Artigo</h2>
+    </div>
+    <div class="card-body">
+      <form action="/articles/update" method="POST">
+        <input type="hidden" name="id" value="<%=article.id%>" />
+        <input
+          class="form-control"
+          type="text"
+          name="title"
+          placeholder="Defina o título do artigo"
+          value="<%=article.title%>"
+        />
+        <input type="hidden" name="id" value="<%= article.id%>" />
+        <textarea
+          class="form-control mt-3"
+          placeholder="Escreva o artigo aqui"
+          name="body"
+          id="article"
+        ></textarea>
+        <label>Categoria</label>
+        <select name="category" class="form-control mb-2">
+          <% categories.forEach((category) => { %> <% if(category.id ===
+          article.categoryId) { %>
+          <option value="<%= category.id  %>" selected>
+            <%= category.title %>
+          </option>
+          <% } else {%>
+          <option value="<%= category.id  %>"><%= category.title %></option>
+          <% } %> <% }) %>
+        </select>
+        <button class="btn btn-success mt-2">Atualizar</button>
+      </form>
+    </div>
+  </div>
 </div>
 <script src="/tinymce/tinymce.min.js"></script>
 <script>
-    tinymce.init({
-        selector: "#article",
-        plugins: [
-            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
-        ]
-    })
+  tinymce.init({
+    selector: "#article",
+    plugins: [
+      "advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons",
+    ],
+  });
 </script>
 <%- include('../../partials/footer.ejs') %>
