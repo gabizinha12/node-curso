@@ -45,6 +45,11 @@ router.get("/login", (req, res) => {
   res.render("admin/users/login");
 });
 
+router.get("/logout", (req, res) => {
+  req.session.user = undefined;
+  res.redirect("/");
+});
+
 router.post("/authenticate", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
